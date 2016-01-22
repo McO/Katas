@@ -6,9 +6,9 @@
         {
         }
 
-        public object Translate(int i)
+        public string Translate(int number)
         {
-            throw new System.NotImplementedException();
+            return "1";
         }
     }
 }
