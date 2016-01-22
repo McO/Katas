@@ -17,7 +17,7 @@ namespace FizzBuzz
         public void When_Translate_is_called_with_2_then_result_should_be_2()
         {
             var solver = new Solver();
-            var result = solver.Translate(1);
+            var result = solver.Translate(2);
             Assert.AreEqual("2", result);
         }
     }
