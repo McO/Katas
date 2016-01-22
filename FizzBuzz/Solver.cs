@@ -8,11 +8,14 @@
 
         public string Translate(int number)
         {
-            if (number % 3 ==0 && number % 5 == 0)
+            bool fizz = number % 3 == 0;
+            bool buzz = number % 5 == 0;
+
+            if (fizz && buzz)
                 return "FizzBuzz";
-            if (number%3 == 0)
+            if (fizz)
                 return "Fizz";
-            if (number % 5 == 0)
+            if (buzz)
                 return "Buzz";
             return number.ToString();
         }
