@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using FizzBuzz;
+using NUnit.Framework;
 
-namespace FizzBuzz
+namespace FizzBuzzTests
 {
     [TestFixture]
     public class SolverTests

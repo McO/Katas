@@ -1,6 +1,6 @@
 ﻿namespace FizzBuzz
 {
-    internal class Solver
+    public class Solver
     {
         public Solver()
         {
