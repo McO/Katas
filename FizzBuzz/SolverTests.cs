@@ -5,20 +5,19 @@ namespace FizzBuzz
     [TestFixture]
     public class SolverTests
     {
-        [Test]
-        public void When_Translate_is_called_with_1_then_result_should_be_1()
+        private Solver _sut;
+        [OneTimeSetUp]
+        public void Init()
         {
-            var solver = new Solver();
-            var result = solver.Translate(1);
-            Assert.AreEqual("1", result);
+            _sut = new Solver();
         }
 
-        [Test]
-        public void When_Translate_is_called_with_2_then_result_should_be_2()
+
+        [TestCase(1, ExpectedResult = "1")]
+        [TestCase(2, ExpectedResult = "2")]
+        public string When_Translate_is_called_with_a_number_it_should_return_the_number_as_string(int number)
         {
-            var solver = new Solver();
-            var result = solver.Translate(2);
-            Assert.AreEqual("2", result);
+            return _sut.Translate(number);
         }
     }
 }
