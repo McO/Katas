@@ -33,5 +33,12 @@ namespace FizzBuzz
         {
             return _sut.Translate(number);
         }
+
+        [TestCase(15, ExpectedResult = "FizzBuzz")]
+        [TestCase(30, ExpectedResult = "FizzBuzz")]
+        public string When_Translate_is_called_with_a_number_divisible_by_3_and_5_it_should_return_FizzBuzz(int number)
+        {
+            return _sut.Translate(number);
+        }
     }
 }
