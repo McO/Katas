@@ -7,7 +7,7 @@ namespace FizzBuzzTests
     public class SolverTests
     {
         private Solver _sut;
-        [OneTimeSetUp]
+        [SetUp]
         public void Init()
         {
             _sut = new Solver();
