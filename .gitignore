@@ -17,7 +17,10 @@
 [Rr]eleases/
 x64/
 x86/
+<<<<<<< HEAD
 build/
+=======
+>>>>>>> 932bab39d37c55ed7dfa911d60b226a03cac021a
 bld/
 [Bb]in/
 [Oo]bj/
@@ -76,6 +79,10 @@ _Chutzpah*
 ipch/
 *.aps
 *.ncb
+<<<<<<< HEAD
+=======
+*.opendb
+>>>>>>> 932bab39d37c55ed7dfa911d60b226a03cac021a
 *.opensdf
 *.sdf
 *.cachefile
@@ -151,6 +158,7 @@ publish/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
 
+<<<<<<< HEAD
 # Windows Azure Build Output
 csx/
 *.build.csdef
@@ -161,6 +169,22 @@ rfc/
 
 # Windows Store app package directory
 AppPackages/
+=======
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Microsoft Azure ApplicationInsights config file
+ApplicationInsights.config
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/
+>>>>>>> 932bab39d37c55ed7dfa911d60b226a03cac021a
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -170,7 +194,10 @@ AppPackages/
 
 # Others
 ClientBin/
+<<<<<<< HEAD
 [Ss]tyle[Cc]op.*
+=======
+>>>>>>> 932bab39d37c55ed7dfa911d60b226a03cac021a
 ~$*
 *~
 *.dbmdl
@@ -228,6 +255,7 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+<<<<<<< HEAD
 
 # =========================
 # Operating System Files
@@ -279,3 +307,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+>>>>>>> 932bab39d37c55ed7dfa911d60b226a03cac021a
