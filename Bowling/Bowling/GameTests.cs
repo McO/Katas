@@ -73,7 +73,7 @@ namespace Bowling
         {
             _currentRoll = 0;
             _currentFrame = 0;
-            _rolls = new int[21];
+            _rolls = new int[22];
         }
 
         public void Roll(int pins)
@@ -85,10 +85,11 @@ namespace Bowling
 
         private void SetCurrentState()
         {
-            if (IsStrike(_currentFrame))
+            if (IsStrike(_currentFrame) && _currentFrame != 9)
                 _currentRoll++;
 
             _currentRoll++;
+
             if (_currentRoll % 2 == 0)
                 _currentFrame += 1;
         }
