@@ -51,6 +51,16 @@ namespace Bowling
 
             Assert.AreEqual(22, game.Score());
         }
+
+        [Test]
+        public void Perfect_game()
+        {
+            var game = new Game();
+            for (var i = 1; i <= 12; i++)
+                game.Roll(10);
+
+            Assert.AreEqual(300, game.Score());
+        }
     }
 
     public class Game
@@ -79,7 +89,7 @@ namespace Bowling
                 _currentRoll++;
 
             _currentRoll++;
-            if (_currentRoll%2 == 0)
+            if (_currentRoll % 2 == 0)
                 _currentFrame += 1;
         }
 
