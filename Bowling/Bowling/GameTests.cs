@@ -24,6 +24,19 @@ namespace Bowling
 
             Assert.AreEqual(20, game.Score());
         }
+
+        [Test]
+        public void Game_with_a_Spare()
+        {
+            var game = new Game();
+            game.Roll(9);
+            game.Roll(1); 
+            game.Roll(5);
+            for (var i = 4; i <= 20; i++)
+                game.Roll(0);
+
+            Assert.AreEqual(20, game.Score());
+        }
     }
 
     public class Game
