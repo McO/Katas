@@ -60,6 +60,12 @@ namespace Bowling
         {
             var score = _rolls.Sum();
 
+            for (var frame = 0; frame < 10; frame++)
+            {
+                if (_rolls[2 * frame] + _rolls[2 * frame + 1] == 10)
+                    score += _rolls[2 * frame + 2];
+            }
+
             return score;
         }
     }
