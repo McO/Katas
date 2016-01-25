@@ -57,24 +57,30 @@ namespace Bowling
     {
         private readonly int[] _rolls;
         private int _currentRoll;
+        private int _currentFrame;
 
         public Game()
         {
             _currentRoll = 0;
+            _currentFrame = 0;
             _rolls = new int[21];
         }
 
         public void Roll(int pins)
         {
             _rolls[_currentRoll] = pins;
-            if (IsStrike(_currentRoll))
-                _currentRoll++;
-            _currentRoll++;
+
+            SetCurrentState();
         }
 
-        private bool IsStrike(int rollIndex)
+        private void SetCurrentState()
         {
-            return rollIndex%2 == 0 && _rolls[rollIndex] == 10;
+            if (IsStrike(_currentFrame))
+                _currentRoll++;
+
+            _currentRoll++;
+            if (_currentRoll%2 == 0)
+                _currentFrame += 1;
         }
 
         public int Score()
@@ -83,13 +89,33 @@ namespace Bowling
 
             for (var frame = 0; frame < 10; frame++)
             {
-                if (_rolls[2 * frame] == 10)
-                    score += _rolls[2 * frame + 2] + _rolls[2 * frame + 3];
-                else if (_rolls[2 * frame] + _rolls[2 * frame + 1] == 10)
-                    score += _rolls[2 * frame + 2];
+                if (IsStrike(frame))
+                    score += StrikeBonus(frame);
+                else if (IsSpare(frame))
+                    score += SpareBonus(frame);
             }
 
             return score;
+        }
+
+        private int StrikeBonus(int frame)
+        {
+            return _rolls[2 * frame + 2] + _rolls[2 * frame + 3];
+        }
+
+        private int SpareBonus(int frame)
+        {
+            return _rolls[2 * frame + 2];
+        }
+
+        private bool IsSpare(int frame)
+        {
+            return _rolls[2 * frame] + _rolls[2 * frame + 1] == 10;
+        }
+
+        private bool IsStrike(int frame)
+        {
+            return _rolls[2 * frame] == 10;
         }
     }
 }
