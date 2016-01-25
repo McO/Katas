@@ -78,7 +78,7 @@ namespace Bowling
         {
             _rolls[_currentRoll++] = pins;
         }
-        
+
 
         public int Score()
         {
@@ -87,24 +87,48 @@ namespace Bowling
             var rollIndex = 0;
             for (var frameIndex = 0; frameIndex < 10; frameIndex++)
             {
-                if (_rolls[rollIndex] == 10)
+                if (IsStrike(rollIndex))
                 {
-                    score += 10 + _rolls[rollIndex + 1] + _rolls[rollIndex + 2];
+                    score += 10 + StrikeBonus(rollIndex);
                     rollIndex++;
                 }
-                else if (_rolls[rollIndex] + _rolls[rollIndex + 1] == 10)
+                else if (IsSpare(rollIndex))
                 {
-                    score += 10 + _rolls[rollIndex + 2];
+                    score += 10 + SpareBonus(rollIndex);
                     rollIndex += 2;
                 }
                 else
                 {
-                    score += _rolls[rollIndex] + _rolls[rollIndex + 1];
+                    score += FrameScore(rollIndex);
                     rollIndex += 2;
                 }
             }
 
             return score;
+        }
+
+        private int FrameScore(int rollIndex)
+        {
+            return _rolls[rollIndex] + _rolls[rollIndex + 1];
+        }
+
+        private int SpareBonus(int rollIndex)
+        {
+            return _rolls[rollIndex + 2];
+        }
+        private int StrikeBonus(int rollIndex)
+        {
+            return _rolls[rollIndex + 1] + _rolls[rollIndex + 2];
+        }
+
+        private bool IsSpare(int rollIndex)
+        {
+            return FrameScore(rollIndex) == 10;
+        }
+
+        private bool IsStrike(int rollIndex)
+        {
+            return _rolls[rollIndex] == 10;
         }
     }
 }
