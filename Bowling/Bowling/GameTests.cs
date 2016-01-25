@@ -67,66 +67,44 @@ namespace Bowling
     {
         private readonly int[] _rolls;
         private int _currentRoll;
-       // private int _currentFrame;
 
         public Game()
         {
             _currentRoll = 0;
-            //_currentFrame = 0;
             _rolls = new int[22];
         }
 
         public void Roll(int pins)
         {
             _rolls[_currentRoll++] = pins;
-
-            //SetCurrentState();
         }
-
-        //private void SetCurrentState()
-        //{
-        //    if (IsStrike(_currentFrame) && _currentFrame != 9)
-        //        _currentRoll++;
-
-        //    _currentRoll++;
-
-        //    if (_currentRoll % 2 == 0)
-        //        _currentFrame += 1;
-        //}
+        
 
         public int Score()
         {
-            var score = _rolls.Sum();
+            var score = 0;
 
-            for (var frame = 0; frame < 10; frame++)
+            var rollIndex = 0;
+            for (var frameIndex = 0; frameIndex < 10; frameIndex++)
             {
-                if (IsStrike(frame))
-                    score += StrikeBonus(frame);
-                else if (IsSpare(frame))
-                    score += SpareBonus(frame);
+                if (_rolls[rollIndex] == 10)
+                {
+                    score += 10 + _rolls[rollIndex + 1] + _rolls[rollIndex + 2];
+                    rollIndex++;
+                }
+                else if (_rolls[rollIndex] + _rolls[rollIndex + 1] == 10)
+                {
+                    score += 10 + _rolls[rollIndex + 2];
+                    rollIndex += 2;
+                }
+                else
+                {
+                    score += _rolls[rollIndex] + _rolls[rollIndex + 1];
+                    rollIndex += 2;
+                }
             }
 
             return score;
-        }
-
-        private int StrikeBonus(int frame)
-        {
-            return _rolls[2 * frame + 2] + _rolls[2 * frame + 3];
-        }
-
-        private int SpareBonus(int frame)
-        {
-            return _rolls[2 * frame + 2];
-        }
-
-        private bool IsSpare(int frame)
-        {
-            return _rolls[2 * frame] + _rolls[2 * frame + 1] == 10;
-        }
-
-        private bool IsStrike(int frame)
-        {
-            return _rolls[2 * frame] == 10;
         }
     }
 }
