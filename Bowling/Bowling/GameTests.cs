@@ -67,32 +67,32 @@ namespace Bowling
     {
         private readonly int[] _rolls;
         private int _currentRoll;
-        private int _currentFrame;
+       // private int _currentFrame;
 
         public Game()
         {
             _currentRoll = 0;
-            _currentFrame = 0;
+            //_currentFrame = 0;
             _rolls = new int[22];
         }
 
         public void Roll(int pins)
         {
-            _rolls[_currentRoll] = pins;
+            _rolls[_currentRoll++] = pins;
 
-            SetCurrentState();
+            //SetCurrentState();
         }
 
-        private void SetCurrentState()
-        {
-            if (IsStrike(_currentFrame) && _currentFrame != 9)
-                _currentRoll++;
+        //private void SetCurrentState()
+        //{
+        //    if (IsStrike(_currentFrame) && _currentFrame != 9)
+        //        _currentRoll++;
 
-            _currentRoll++;
+        //    _currentRoll++;
 
-            if (_currentRoll % 2 == 0)
-                _currentFrame += 1;
-        }
+        //    if (_currentRoll % 2 == 0)
+        //        _currentFrame += 1;
+        //}
 
         public int Score()
         {
