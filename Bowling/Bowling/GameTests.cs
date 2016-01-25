@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 
 namespace Bowling
 {
@@ -30,7 +31,7 @@ namespace Bowling
         {
             var game = new Game();
             game.Roll(9);
-            game.Roll(1); 
+            game.Roll(1);
             game.Roll(5);
             for (var i = 4; i <= 20; i++)
                 game.Roll(0);
@@ -41,16 +42,25 @@ namespace Bowling
 
     public class Game
     {
-        private int _score;
+        private readonly int[] _rolls;
+        private int _currentRoll;
+
+        public Game()
+        {
+            _currentRoll = 0;
+            _rolls = new int[21];
+        }
 
         public void Roll(int pins)
         {
-            _score += pins;
+            _rolls[_currentRoll++] = pins;
         }
 
         public int Score()
         {
-            return _score;
+            var score = _rolls.Sum();
+
+            return score;
         }
     }
 }
